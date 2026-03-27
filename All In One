@@ -1,0 +1,501 @@
+practical no 1 CalculatorApplication
+public class MainActivity extends AppCompatActivity { EditText e1,e2;
+float num1,num2,output; TextView res;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main);
+e1 = findViewById(R.id.editTextText); e2 = findViewById(R.id.editTextText2); res = findViewById(R.id.textView3);
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+}
+
+public void add(View view){
+num1 = Float.parseFloat(e1.getText().toString()); num2 = Float.parseFloat(e2.getText().toString()); output = num1 + num2;
+res.setText("Addition is " + output);
+}
+public void sub(View view){
+num1 = Float.parseFloat(e1.getText().toString()); num2 = Float.parseFloat(e2.getText().toString()); output = num1 - num2;
+res.setText("Substraction is " + output);
+}
+public void mul(View view){
+num1 = Float.parseFloat(e1.getText().toString()); num2 = Float.parseFloat(e2.getText().toString()); output = num1 * num2;
+res.setText("Multiplication is " + output);
+}
+public void div(View view){
+num1 = Float.parseFloat(e1.getText().toString()); num2 = Float.parseFloat(e2.getText().toString()); output = num1 / num2;
+res.setText("Division is " + output);
+}
+ 
+public void mod(View view){
+num1 = Float.parseFloat(e1.getText().toString()); num2 = Float.parseFloat(e2.getText().toString()); output = num1 % num2;
+res.setText("Modulus is " + output);
+}
+}
+
+layout
+
+3 textview 2 plaintext 5 buttons
+don't forget to map function with its button (onClick attribute of button) practical 2 MenuApplication
+public class MainActivity extends AppCompatActivity {
+
+RelativeLayout relativeLayout; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main); relativeLayout = findViewById(R.id.main);
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+}
+public boolean onCreateOptionsMenu(Menu menu){ MenuInflater menuInflater = getMenuInflater(); menuInflater.inflate(R.menu.mymenu,menu); return true;
+}
+
+public boolean onOptionsItemSelected(@NonNull MenuItem item){ if (item.getItemId()==R.id.m1){
+
+Toast.makeText(getApplicationContext(),"Settings",Toast.LENGTH_LONG).show();  return true;
+} else if (item.getItemId()==R.id.m2) {
+
+Toast.makeText(getApplicationContext(),"Search",Toast.LENGTH_LONG).show();  return true;
+} else if (item.getItemId()==R.id.m3) { Toast.makeText(getApplicationContext(),"Compose
+ 
+Email",Toast.LENGTH_LONG).show();
+return true;
+} else if (item.getItemId()==R.id.m4) {
+
+Toast.makeText(getApplicationContext(),"Feedback",Toast.LENGTH_LONG).show();  return true;
+}
+return super.onOptionsItemSelected(item);
+}
+}
+
+layout
+
+add a new resource directory name manu and value manu then add a menu file name with name mymenu add item
+make sure you have removed noactionbar from themes.xml without menu not work practical 3 NavigationApplication
+public class MainActivity extends AppCompatActivity {
+
+EditText e1,e2; Intent it; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main);
+e1 = findViewById(R.id.editTextText); e2 = findViewById(R.id.editTextText2);
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+}
+public void submit(View view){
+if (e1.getText().toString().equals("ntp") && e2.getText().toString().equals("123")){
+Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
+it = new Intent(MainActivity.this,second_page.class); it.putExtra("username",e1.getText().toString()); it.putExtra("password",e2.getText().toString()); startActivity(it);
+}else {
+Toast.makeText(getApplicationContext(),"Login
+ 
+Failed",Toast.LENGTH_SHORT).show();
+}
+}
+}
+
+create another java class with name second_page.java add xml file in layout with name second_page.xml
+public class second_page extends AppCompatActivity { Intent it;
+@Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); setContentView(R.layout.second_page);
+it = getIntent();
+String username = it.getStringExtra("username"); String password = it.getStringExtra("password"); Toast.makeText(getApplicationContext(),username+"
+"+password,Toast.LENGTH_SHORT).show();
+}
+}
+
+layout
+
+activity_main.xml 2 textview 2 plaintext one button practical 5 LinearApplication
+public class MainActivity extends AppCompatActivity {
+
+ListView lv; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main);
+lv = findViewById(R.id.listview); ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v,
+insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+lv.setOnItemClickListener((parent, view, position, id) ->{ switch (position){
+case 0:
+Toast.makeText(this, "Rose", Toast.LENGTH_SHORT).show();
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+});
+}
+}
+ 
+return; case 1:
+Toast.makeText(this, "Lily", Toast.LENGTH_SHORT).show(); return;
+case 2:
+Toast.makeText(this, "Sunflower", Toast.LENGTH_SHORT).show(); return;
+case 3:
+Toast.makeText(this, "Tulip", Toast.LENGTH_SHORT).show(); return;
+case 4:
+Toast.makeText(this, "Daisy", Toast.LENGTH_SHORT).show(); return;
+case 5:
+Toast.makeText(this, "Orchid", Toast.LENGTH_SHORT).show(); return;
+case 6:
+Toast.makeText(this, "Jaismine", Toast.LENGTH_SHORT).show(); return;
+case 7:
+Toast.makeText(this, "Carnation", Toast.LENGTH_SHORT).show(); return;
+case 8:
+Toast.makeText(this, "Violet", Toast.LENGTH_SHORT).show(); return;
+case 9:
+Toast.makeText(this, "Lavendar", Toast.LENGTH_SHORT).show(); return;
+default:
+Toast.makeText(this, "Flower", Toast.LENGTH_SHORT).show();
+ 
+
+layout
+
+add a listview to display selected item from list
+add a array of flowerlist with 10 flower name in Stings.xml (don't need to create it already will be there in values) make sure you make you map the array with the listview
+
+practical 7 GridApplication
+public class MainActivity extends AppCompatActivity { ImageButton i1,i2,i3,i4,i5,i6;
+@Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState);
+ 
+EdgeToEdge.enable(this); setContentView(R.layout.activity_main); i1=findViewById(R.id.imageButton);
+i2 = findViewById(R.id.imageButton2); i3 = findViewById(R.id.imageButton3); i4 = findViewById(R.id.imageButton4); i5 = findViewById(R.id.imageButton5); i6 = findViewById(R.id.imageButton6);
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+i1.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { Toast.makeText(getApplicationContext(),"Image
+1",Toast.LENGTH_SHORT).show();
+}
+});
+i2.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { Toast.makeText(getApplicationContext(),"Image
+2",Toast.LENGTH_SHORT).show();
+}
+});
+i3.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { Toast.makeText(getApplicationContext(),"Image
+3",Toast.LENGTH_SHORT).show();
+}
+});
+i4.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { Toast.makeText(getApplicationContext(),"Image
+4",Toast.LENGTH_SHORT).show();
+}
+});
+i5.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { Toast.makeText(getApplicationContext(),"Image
+5",Toast.LENGTH_SHORT).show();
+}
+ 
+});
+i6.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { Toast.makeText(getApplicationContext(),"Image
+6",Toast.LENGTH_SHORT).show();
+}
+});
+}
+}
+
+layout
+
+take 6 imagebutton add 6 image in the drawable folder practical 8 SubMenuApplication
+public class MainActivity extends AppCompatActivity {
+
+RelativeLayout relativeLayout; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main); relativeLayout = findViewById(R.id.main);
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+}
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu) { MenuInflater menuInflater = getMenuInflater(); menuInflater.inflate(R.menu.submenu, menu); return true;
+}
+
+@Override
+public boolean onOptionsItemSelected(@NonNull MenuItem item) { int setitem = item.getItemId();
+if (setitem == R.id.m1) { Toast.makeText(getApplicationContext(), "Settings",
+Toast.LENGTH_SHORT).show();
+} else if (setitem == R.id.m2) {
+ 
+Toast.makeText(getApplicationContext(), "Background", Toast.LENGTH_SHORT).show();
+} else if (setitem == R.id.sm2) { Toast.makeText(getApplicationContext(), "Yellow",
+Toast.LENGTH_SHORT).show();
+relativeLayout.setBackgroundColor(Color.YELLOW);
+} else if (setitem == R.id.sm1) { Toast.makeText(getApplicationContext(), "Red",
+Toast.LENGTH_SHORT).show();
+relativeLayout.setBackgroundColor(Color.RED);
+} else if (setitem == R.id.sm3) { Toast.makeText(getApplicationContext(), "Yellow",
+Toast.LENGTH_SHORT).show();
+relativeLayout.setBackgroundColor(Color.GREEN);
+} else if (setitem == R.id.sm4) { Toast.makeText(getApplicationContext(), "Yellow",
+Toast.LENGTH_SHORT).show();
+relativeLayout.setBackgroundColor(Color.BLUE);
+} else if (setitem == R.id.m3) { Toast.makeText(getApplicationContext(), "Tools",
+Toast.LENGTH_SHORT).show();
+}
+return super.onOptionsItemSelected(item);
+}
+}
+
+layout
+
+add a new resource directory name manu and value manu then add a menu file name with name submenu add item
+make sure you have removed noactionbar from themes.xml without menu not work practical 9 PermissionApplication
+public class MainActivity extends AppCompatActivity {
+
+Button b1,b2,b3,b4;
+public static final int CAMERA = 100; public static final int CONTACT = 101; public static final int CALENDAR = 102; public static final int STORAGE = 103; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main);
+b1 = findViewById(R.id.button); b2 = findViewById(R.id.button2); b3 = findViewById(R.id.button3); b4 = findViewById(R.id.button4);
+ 
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+b1.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { checkPermission(Manifest.permission.CAMERA,CAMERA);
+}
+});
+b2.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { checkPermission(Manifest.permission.READ_CONTACTS,CONTACT);
+}
+});
+b3.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { checkPermission(Manifest.permission.READ_CALENDAR,CALENDAR);
+}
+});
+b4.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { checkPermission(Manifest.permission.READ_EXTERNAL_STORAGE,STORAGE);
+}
+});
+}
+public void checkPermission(String perm,int reqCode){
+if (ContextCompat.checkSelfPermission(MainActivity.this,perm) == PackageManager.PERMISSION_DENIED){
+ActivityCompat.requestPermissions(MainActivity.this,new String[]{perm},reqCode);
+} else {
+Toast.makeText(getApplicationContext(),"Permission already granted",Toast.LENGTH_SHORT).show();
+}
+}
+
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults, int deviceId) {
+super.onRequestPermissionsResult(requestCode, permissions, grantResults, deviceId);
+switch (requestCode){
+ 
+case CAMERA:
+if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+Toast.makeText(getApplicationContext(),"Camera Permission Granted",Toast.LENGTH_SHORT).show();
+} else {
+Toast.makeText(getApplicationContext(),"Camera Permission Denied",Toast.LENGTH_SHORT).show();
+}
+case CALENDAR:
+if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+Toast.makeText(getApplicationContext(),"Camera Permission Granted",Toast.LENGTH_SHORT).show();
+} else {
+Toast.makeText(getApplicationContext(),"Camera Permission Denied",Toast.LENGTH_SHORT).show();
+}
+case CONTACT:
+if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+Toast.makeText(getApplicationContext(),"Camera Permission Granted",Toast.LENGTH_SHORT).show();
+} else {
+Toast.makeText(getApplicationContext(),"Camera Permission Denied",Toast.LENGTH_SHORT).show();
+}
+case STORAGE:
+if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+Toast.makeText(getApplicationContext(),"Camera Permission Granted",Toast.LENGTH_SHORT).show();
+} else {
+Toast.makeText(getApplicationContext(),"Camera Permission Denied",Toast.LENGTH_SHORT).show();
+}
+}
+return;
+}
+}
+
+layout
+
+add 4 button make sure you add the permission in manifest file
+<uses-feature android:name="android.hardware.camera" android:required="false" />
+
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.READ_CONTACTS" />
+<uses-permission android:name="android.permission.READ_CALENDAR" />
+ 
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> practical 11 CallingApplication
+public class MainActivity extends AppCompatActivity {
+
+Button b1; EditText e1; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main);
+b1 = findViewById(R.id.button);
+e1 = findViewById(R.id.editTextText); b1.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View v) {
+Intent it = new Intent(Intent.ACTION_CALL); String Phone = "";
+if (e1.getText().toString().length() == 10) {
+if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
+ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CALL_PHONE},100);
+return;
+}
+Phone = "tel:" + e1.getText().toString(); it.setData(Uri.parse(Phone));
+Toast.makeText(MainActivity.this,"Calling on",Toast.LENGTH_LONG).show();
+startActivity(it);
+}else{
+Toast.makeText(MainActivity.this,"Invalid Number",Toast.LENGTH_LONG).show();
+}
+}
+});
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+}
+
+@Override
+ 
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults, int deviceId) {
+super.onRequestPermissionsResult(requestCode, permissions, grantResults, deviceId);
+if (grantResults.length>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+Toast.makeText(MainActivity.this,"Permission Granted",Toast.LENGTH_LONG).show();
+}else{
+Toast.makeText(MainActivity.this,"Permission Denied",Toast.LENGTH_LONG).show();
+}
+return;
+}
+}
+
+layout
+
+add a textview and plaintext a button make sure you are adding permission in manifest
+<uses-feature android:name="android.hardware.telephony" android:required="false" />
+
+<uses-permission android:name="android.permission.CALL_PHONE"/> practical 14 RealTimeApplication
+public class MainActivity extends AppCompatActivity {
+
+EditText e1; TextView t1; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main);
+e1 = findViewById(R.id.editTextText); t1 = findViewById(R.id.textView);
+e1.addTextChangedListener(new TextWatcher() { @Override
+public void afterTextChanged(Editable s) { t1.setText(e1.getText().toString());
+}
+
+ 
+
+
+after) {
+ 
+@Override
+public void beforeTextChanged(CharSequence s, int start, int count, int
+ 
+
+}
+
+@Override
+ 
+public void onTextChanged(CharSequence s, int start, int before, int
+count) {
+
+}
+});
+ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+}
+}
+
+layout
+add a textview and plaintext practical 15 LifeCycleApplication
+public class MainActivity extends AppCompatActivity {
+
+Button b1; TextView t1; @Override
+protected void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); EdgeToEdge.enable(this); setContentView(R.layout.activity_main);
+b1 = findViewById(R.id.button); t1 = findViewById(R.id.textView);
+b1.setOnClickListener(new View.OnClickListener() { @Override
+public void onClick(View v) { t1.setText("Welcome!");
+}
+});
+Toast.makeText(this,"onCreate called",Toast.LENGTH_SHORT).show(); Log.d("LifeCycle","onCreate called"); ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v,
+insets) -> {
+Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+return insets;
+});
+}
+ 
+@Override
+protected void onStart() { super.onStart();
+Toast.makeText(this,"onStart called",Toast.LENGTH_SHORT).show(); Log.d("LifeCycle","onStart called");
+}
+
+@Override
+protected void onResume() { super.onResume();
+Toast.makeText(this,"onResume called",Toast.LENGTH_SHORT).show(); Log.d("LifeCycle","onResume called");
+}
+
+@Override
+protected void onPause() { super.onPause();
+Toast.makeText(this,"onPause called",Toast.LENGTH_SHORT).show(); Log.d("LifeCycle","onPause called");
+}
+
+@Override
+protected void onStop() { super.onStop();
+Toast.makeText(this,"onStop called",Toast.LENGTH_SHORT).show(); Log.d("LifeCycle","onStop called");
+}
+
+@Override
+protected void onRestart() { super.onRestart();
+Toast.makeText(this,"onRestart called",Toast.LENGTH_SHORT).show(); Log.d("LifeCycle","onRestart called");
+}
+
+@Override
+protected void onDestroy() { super.onDestroy();
+Toast.makeText(this,"onDestroy called",Toast.LENGTH_SHORT).show(); Log.d("LifeCycle","onDestroy called");
+}
+}
+
+layout
+
+add a textview and button
